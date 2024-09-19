@@ -1,0 +1,38 @@
+.filter {
+    margin-bottom: 60px;
+    display: grid;
+    grid-template: 70px 70px 70px/ 374px 374px;
+    gap: 20px 30px;
+    grid-auto-flow: column;
+    &__option {
+        height: 70px;
+        width: 374px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__select {
+        height: 48px;
+        padding: 0 15px 0;
+        border: 1px solid #000;
+        font-size: 14px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 14 8" fill="none"><path d="M1 1L7 7L13 1" stroke="black"/></svg>') no-repeat right 15px center;
+        background-size: 10px;
+    }
+    &__inputs-container {
+        height: 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__input {
+        height: 48px;
+        width: 155px;
+        padding: 0 15px 0;
+        border: 1px solid #000;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,46 @@
+@import '../../styles/variables.scss';
+
+.search {
+    display: grid;
+    grid-template: 15px 48px 15px / 374px 120px;
+    gap: 8px 30px;
+    margin-bottom: 60px;
+
+    &__input {
+        grid-column: 1 / 2;
+        width: 374px;
+        height: 48px;
+        padding: 0 15px 0;
+        border: 1px solid #000;
+        font-size: 14px;
+    }
+
+    &__btn {
+        width: 120px;
+        height: 48px;
+        background-color: $main-color;
+        border: none;
+        color: #FFF;
+        font-size: 14px;
+        font-weight: 400;
+        transition: .6s ease;
+        cursor: pointer;
+        &:hover {
+            border-radius: 10px;
+            border: 1px solid #000;
+        }
+    }
+
+    &__advanced {
+        text-align: start;
+        font-size: 14px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: underline;
+        svg {
+            margin-left: 5px;
+            transition: .6s ease;
+        }
+    }
+}
