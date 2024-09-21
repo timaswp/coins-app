@@ -1,3 +1,17 @@
+@import "/src/styles/variables.scss";
+
 .header {
     margin-bottom: 25px;
+    &__nav {
+        font-size: 12px;
+    }
+    &__link, span {
+        color: #B1ABAB;
+    }
+    &__link {
+        transition: .6s ease;
+        &:hover {
+            color: $main-color;
+        }
+    }
 }

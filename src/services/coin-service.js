@@ -15,6 +15,10 @@ export default class CoinService {
     }
 
     async getAdvancedOptions() {
-        return await this.getResource('/filter')
+        return await this.getResource('/filter');
+    }
+
+    async getCoinsList(search) {
+        return await this.getResource(`/list${search}`);
     }
 }

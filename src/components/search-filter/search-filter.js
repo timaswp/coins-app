@@ -16,9 +16,6 @@ const SearchFilter = ({isOpen, CoinService, optionsObj, optionsRequested, option
             .catch(err => console.error(err));
     }, []);
 
-    console.log(optionsObj);
-
-
     if (isOpen) {
         return (
             <div className="filter">

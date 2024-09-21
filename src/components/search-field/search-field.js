@@ -10,7 +10,7 @@ const SearchField = (props) => {
 
     return (
         <>
-            <div className="search" style={isOpen ? { marginBottom: "25px" } : {}} >
+            <div className="search">
                 <label htmlFor="search" className="search__label label">Input field</label>
                 <input type="text" id="search" className="search__input"/>
                 

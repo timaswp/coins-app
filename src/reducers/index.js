@@ -3,7 +3,8 @@ const initialState = {
     loading: true,
     error: false,
     filterIsOpen: false,
-    advancedOptions: {}
+    advancedOptions: {},
+    coins: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -33,6 +34,16 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 advancedOptions: state.advancedOptions,
+            };
+        case 'COINS_LOADED':
+            return {
+                ...state,
+                coins: action.payload
+            };
+        case 'COINS_REQUESTED':
+            return {
+                ...state,
+                coins: state.coins,
             };
         default:
             return state;

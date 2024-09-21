@@ -1,0 +1,18 @@
+@import "/src/styles/variables.scss";
+
+.coins-list__item {
+    display: grid;
+    grid-template: 20px 95px / 120px 225px;
+    gap: 5px 30px;
+    &__img {
+        grid-row: 1 / 3;
+    }
+    &__title {
+        font-size: 16px;
+        font-weight: 700;
+        color: $main-color;
+    }
+    &__descr {
+        font-size: 12px;
+    }
+}
