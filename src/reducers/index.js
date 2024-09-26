@@ -4,7 +4,11 @@ const initialState = {
     error: false,
     filterIsOpen: false,
     advancedOptions: {},
-    coins: []
+    coins: {
+        count: 0,
+        data: []
+    },
+    coin: {}
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,6 +23,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 categories: state.categories,
+            };
+        case 'LOADING_ERROR':
+            return {
+                ...state,
+                loading: false,
+                error: true
             };
         case 'TOGGLE_FILTER':
             return {
@@ -38,12 +48,24 @@ const reducer = (state = initialState, action) => {
         case 'COINS_LOADED':
             return {
                 ...state,
-                coins: action.payload
+                coins: action.payload,
+                loading: false
             };
         case 'COINS_REQUESTED':
             return {
                 ...state,
                 coins: state.coins,
+            };
+        case 'COIN_LOADED':
+            return {
+                ...state,
+                coin: action.payload,
+                loading: false
+            };
+        case 'COIN_REQUESTED':
+            return {
+                ...state,
+                coin: state.coin,
             };
         default:
             return state;

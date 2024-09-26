@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import WithCoinService from '../hoc/with-coin-service';
-import { catalogLoaded, catalogRequested } from '../../actions';
+import { catalogLoaded, catalogRequested, loadingError } from '../../actions';
 import CategoryItem from "../category-item/category-item";
 import "./category-list.scss";
+import Spinner from "../spinner/spinner";
+import Error from "../error/error";
 
 class CategoryList extends Component {
     componentDidMount() {
@@ -13,11 +15,19 @@ class CategoryList extends Component {
 
         CoinService.getCategories()
             .then(res => catalogLoaded(res))
-            .catch(err => console.error(err));
+            .catch(() => loadingError());
     }
 
     render() {
-        const {categories} = this.props;
+        const {categories, loading, error} = this.props;
+
+        if (loading) {
+            return <Spinner/>
+        }
+
+        if (error) {
+            return <Error/>
+        }
 
         const items = categories.map((category, i) => {
             return <CategoryItem
@@ -41,13 +51,16 @@ const View = ({items}) => {
 
 const mapStateToProps = (state) => {
     return {
-        categories: state.categories
+        categories: state.categories,
+        loading: state.loading,
+        error: state.error
     }
 };
 
 const mapDispatchToProps = {
     catalogLoaded,
-    catalogRequested
+    catalogRequested,
+    loadingError
 };
 
 export default WithCoinService()(connect(mapStateToProps, mapDispatchToProps)(CategoryList));

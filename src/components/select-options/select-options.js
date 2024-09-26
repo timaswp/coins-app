@@ -13,8 +13,8 @@ const SelectOption = ({specialName, label, options}) => {
 };
 
 const Options = ({options}) => {
-    return options.map(option => (
-        <option value={option}>{option}</option>
+    return options.map((option, i) => (
+        <option key={i} value={option}>{option}</option>
     ))
 };
 

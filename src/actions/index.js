@@ -11,6 +11,12 @@ const catalogRequested = () => {
     };
 };
 
+const loadingError = () => {
+    return {
+        type: 'LOADING_ERROR'
+    };
+};
+
 const toggleFilter = () => {
     return {
         type: 'TOGGLE_FILTER'
@@ -43,12 +49,28 @@ const coinsLoaded = (newCoinsList) => {
     };
 };
 
+const coinRequested = () => {
+    return {
+        type: 'COIN_REQUESTED'
+    };
+};
+
+const coinLoaded = (newCoin) => {
+    return {
+        type: 'COIN_LOADED',
+        payload: newCoin
+    };
+};
+
 export {
     catalogLoaded,
     catalogRequested,
+    loadingError,
     toggleFilter,
     optionsLoaded,
     optionsRequested,
     coinsLoaded,
-    coinsRequested
+    coinsRequested,
+    coinRequested,
+    coinLoaded
 };

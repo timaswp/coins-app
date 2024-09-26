@@ -21,4 +21,8 @@ export default class CoinService {
     async getCoinsList(search) {
         return await this.getResource(`/list${search}`);
     }
+
+    async getCoinById(id) {
+        return await this.getResource(`/${id}`);
+    }
 }

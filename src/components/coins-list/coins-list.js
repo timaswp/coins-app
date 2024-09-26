@@ -4,9 +4,11 @@ import "./coins-list.scss";
 import { useLocation } from "react-router-dom";
 import WithCoinService from "../hoc/with-coin-service";
 import { connect } from "react-redux";
-import { coinsLoaded, coinsRequested } from "../../actions";
+import { coinsLoaded, coinsRequested, loadingError } from "../../actions";
+import Spinner from "../spinner/spinner";
+import Error from "../error/error";
 
-const CoinsList = ({CoinService, coinsList, coinsRequested, coinsLoaded}) => {
+const CoinsList = ({CoinService, coinsList, coinsRequested, coinsLoaded, loadingError, loading, error}) => {
     const location = useLocation();
 
     useEffect(() => {
@@ -14,24 +16,28 @@ const CoinsList = ({CoinService, coinsList, coinsRequested, coinsLoaded}) => {
 
         CoinService.getCoinsList(location.search)
             .then(res => coinsLoaded(res))
-            .catch(err => console.error(err));
+            .catch(() => loadingError());
 
-    }, []);
+    }, [CoinService, location.search]);
 
-    console.log(coinsList.data);
+    if (loading) {
+        return <Spinner/>
+    }
 
-    // const items = coinsList.data.map(coin => {
-    //     return <CoinsListItem data-coin={coin}/>
-    // })
+    if (error) {
+        return <Error/>
+    }
 
-    // return (
-    //     <View items={items}/>
-    // )
+    const items = coinsList.data.map(coin => {
+        return <CoinsListItem key={coin._id} coinData={coin}/>
+    });
 
-    return <CoinsListItem/>
+    return (
+        <View items={items}/>
+    )
 };
 
-const View = (items) => {
+const View = ({items}) => {
     return (
         <div className="coins-list">
             {items}
@@ -39,15 +45,18 @@ const View = (items) => {
     )
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
-        coinsList: state.coins
+        coinsList: state.coins,
+        loading: state.loading,
+        error: state.error
     }
 };
 
 const mapDispatchToProps = {
     coinsRequested,
-    coinsLoaded
-}
+    coinsLoaded,
+    loadingError
+};
 
 export default WithCoinService()(connect(mapStateToProps, mapDispatchToProps)(CoinsList));

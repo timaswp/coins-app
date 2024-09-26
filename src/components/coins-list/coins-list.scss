@@ -1,3 +1,11 @@
 .coins-list {
     margin-top: 40px;
+    display: grid;
+    grid-template: auto / repeat(2, 375px);
+    gap: 25px 150px;
+    &__link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+    }
 }
