@@ -18,8 +18,8 @@ export default class CoinService {
         return await this.getResource('/filter');
     }
 
-    async getCoinsList(search) {
-        return await this.getResource(`/list${search}`);
+    async getCoinsList(query) {
+        return await this.getResource(`/list${query}&limit=28`);
     }
 
     async getCoinById(id) {

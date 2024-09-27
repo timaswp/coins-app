@@ -28,6 +28,10 @@ const CoinsList = ({CoinService, coinsList, coinsRequested, coinsLoaded, loading
         return <Error/>
     }
 
+    if (coinsList.data.length == 0) {
+        return <div className="coins-list__not-found">Coins not found :(</div>
+    }
+
     const items = coinsList.data.map(coin => {
         return <CoinsListItem key={coin._id} coinData={coin}/>
     });

@@ -6,7 +6,7 @@ import { optionsLoaded, optionsRequested } from "../../actions";
 import { connect } from "react-redux";
 import RangeOption from "../range-option/range-option";
 
-const SearchFilter = ({isOpen, CoinService, optionsObj, optionsRequested, optionsLoaded}) => {
+const SearchFilter = ({isOpen, CoinService, optionsObj, optionsRequested, optionsLoaded, resetQueryParams}) => {
 
     useEffect(() => {
         optionsRequested();

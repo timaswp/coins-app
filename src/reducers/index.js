@@ -8,7 +8,17 @@ const initialState = {
         count: 0,
         data: []
     },
-    coin: {}
+    coin: {},
+    queryParams: {
+        search: '',
+        country: '',
+        metal: '',
+        quality: '',
+        minPrice: 0,
+        maxPrice: '',
+        minYear: 0,
+        maxYear: ''
+    }
 };
 
 const reducer = (state = initialState, action) => {
@@ -66,6 +76,14 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 coin: state.coin,
+            };
+        case 'UPDATE_PARAMS':
+            return {
+                ...state,
+                queryParams: {
+                    ...state.queryParams,
+                    [action.payload.key]: action.payload.value,
+                }
             };
         default:
             return state;

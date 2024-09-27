@@ -62,6 +62,13 @@ const coinLoaded = (newCoin) => {
     };
 };
 
+const updateQueryParams = (key, value) => {
+    return {
+        type: 'UPDATE_PARAMS',
+        payload: { key, value }
+    };
+};
+
 export {
     catalogLoaded,
     catalogRequested,
@@ -72,5 +79,6 @@ export {
     coinsLoaded,
     coinsRequested,
     coinRequested,
-    coinLoaded
+    coinLoaded,
+    updateQueryParams
 };

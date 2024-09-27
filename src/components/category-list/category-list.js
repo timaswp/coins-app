@@ -9,7 +9,7 @@ import Error from "../error/error";
 
 class CategoryList extends Component {
     componentDidMount() {
-        const {CoinService, catalogLoaded, catalogRequested} = this.props;
+        const {CoinService, catalogLoaded, catalogRequested, loadingError} = this.props;
 
         catalogRequested();
 
