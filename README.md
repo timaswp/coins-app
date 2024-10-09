@@ -23,7 +23,7 @@ The **backend** API, which handles data processing and retrieval, is available a
 
 2. Navigate to the project directory:
    ```bash
-   cd your-frontend-repo
+   cd coins-app
 
 3. Install dependencies:
    ```bash
